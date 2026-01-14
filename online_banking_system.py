@@ -4,6 +4,8 @@
 
 class Account:
 
+    bank_charge = 0.50  # Class variable representing a fixed bank charge
+
     # This function initializes the account with given details
     # The __init__ method is called or executed when the object is created from the class
     def __init__(self, account_number, account_holder_name, account_type):
@@ -64,5 +66,4 @@ account1.display_account()
 
 # Let's check the current balance
 account1.check_balance()
-
 
