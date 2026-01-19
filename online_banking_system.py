@@ -5,6 +5,7 @@
 class Account:
 
     bank_charge = 0.50  # Class variable representing a fixed bank charge
+    number_of_accounts = 0
 
     # This function initializes the account with given details
     # The __init__ method is called or executed when the object is created from the class
@@ -13,6 +14,7 @@ class Account:
         self.account_holder_name = account_holder_name
         self.account_type = account_type
         self.balance = 20.0 # Initial balance set to $20.00
+        Account.number_of_accounts += 1
         print("Account created successfully!")
 
     # This function displays the current state of the account
@@ -38,7 +40,7 @@ class Account:
     # Withdraws attracts a fee of $0.50 plus 2% of the amount withdrawn
     def withdraw(self, amount):
         if amount <= self.balance:
-            total_amount = amount + 0.50 + (amount * 0.02) # Adding withdrawal fee of $0.50 plus 2% of the amount withdrawn
+            total_amount = amount + Account.bank_charge + (amount * 0.02) # Adding withdrawal fee of $0.50 plus 2% of the amount withdrawn
             self.balance -= total_amount # self.balance = self.balance - total_amount
             print(f"Withdrew ${amount}. New balance is ${self.balance}.")
         else:
@@ -47,8 +49,14 @@ class Account:
     # This function returns the current balance of the account
     def check_balance(self):
         # There is a charge of $0.50 for checking balance
-        self.balance -= 0.50
+        self.balance -= Account.bank_charge
         print(f"Current balance is ${self.balance}.")
+
+    # Static method to display the number of accounts opened
+    @staticmethod
+    def get_number_of_accounts():
+        print(f"There are {Account.number_of_accounts} accounts opened.")
+
 
 # Let's create an instance of the Account class and display its details
 account1 = Account("100001", "John Doe", "Savings")
@@ -67,3 +75,17 @@ account1.display_account()
 # Let's check the current balance
 account1.check_balance()
 
+
+faith_account = Account("100002", "Faith John", "Current")
+
+faith_account.display_account()
+
+faith_account.check_balance()
+
+faith_account.withdraw(10)
+
+faith_account.display_account()
+
+print(Account.number_of_accounts)
+
+Account.get_number_of_accounts()
