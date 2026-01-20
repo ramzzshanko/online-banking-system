@@ -57,35 +57,46 @@ class Account:
     def get_number_of_accounts():
         print(f"There are {Account.number_of_accounts} accounts opened.")
 
-
-# Let's create an instance of the Account class and display its details
-account1 = Account("100001", "John Doe", "Savings")
-account1.display_account()
-
-# Let's deposit some money into the account
-account1.deposit(40.0)
-# Display account details again to see the updated balance
-account1.display_account()
-
-# Let's withdraw some money from the account
-account1.withdraw(30.0)
-# Display account details again to see the updated balance
-account1.display_account()
-
-# Let's check the current balance
-account1.check_balance()
+    # This function transfers funds from one account to another
+    def transfer_funds(self, target_account, amount):
+        transfer_charge = 0.03 * amount  # 3% transfer fee
+        total_deduction = amount + transfer_charge
+        if total_deduction <= self.balance:            
+            self.balance -= total_deduction
+            target_account.balance += amount
+            print(f"Transferred ${amount} to account {target_account.account_number}. New balance is ${self.balance}.")
+        else:
+            print(f"Insufficient funds to transfer. The balance is still ${self.balance}.")
 
 
-faith_account = Account("100002", "Faith John", "Current")
+# # Let's create an instance of the Account class and display its details
+# account1 = Account("100001", "John Doe", "Savings")
+# account1.display_account()
 
-faith_account.display_account()
+# # Let's deposit some money into the account
+# account1.deposit(40.0)
+# # Display account details again to see the updated balance
+# account1.display_account()
 
-faith_account.check_balance()
+# # Let's withdraw some money from the account
+# account1.withdraw(30.0)
+# # Display account details again to see the updated balance
+# account1.display_account()
 
-faith_account.withdraw(10)
+# # Let's check the current balance
+# account1.check_balance()
 
-faith_account.display_account()
 
-print(Account.number_of_accounts)
+# faith_account = Account("100002", "Faith John", "Current")
 
-Account.get_number_of_accounts()
+# faith_account.display_account()
+
+# faith_account.check_balance()
+
+# faith_account.withdraw(10)
+
+# faith_account.display_account()
+
+# print(Account.number_of_accounts)
+
+# Account.get_number_of_accounts()
