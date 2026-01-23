@@ -1,46 +1,24 @@
-class Constants:
-    PI = 3.14159
-    EULER = 2.71828
-    GOLDEN_RATIO = 1.61803
-    __ERROR_RATE = 10
+class Account: # This is a class definition for Account
+        
+        number_of_accounts = 0  # Class variable to keep track of number of accounts
 
-    
+        def __init__(self, account_name): # Constructor method to initialize account object
+            self.account_name = account_name
+            print(self.account_name)
 
+            if account_name == "John Doe":
+                print("Welcome back, John!")
+            else:
+                            print("Welcome, new account holder!")
+                            print("Account created successfully.")
 
-print(Constants.PI)
+        if number_of_accounts == 0:
+            number_of_accounts += 1
+            print(f"We have added a placeholder account.")
+        
 
-print(Constants.__ERROR_RATE)
-
-print(PI)
-
-
-# Syntax of a class is simple
-# class ClassName:
-#   pass
-
-
-class Refrigerator:
-
-    def __init__(self, type, manufacturer):
-        self.type = type
-        self.manufacturer = manufacturer
-        self.contents = []
-
-    def add_contents(self, contents):
-        self.contents.extend(contents)
+        def diplay_account(self):
+            print(f"Account Name: {self.account_name}")
 
 
-_1000age = 1000
-a100age = 100
-__10age = 10
-
-ref = Refrigerator("Upright", "Defy")
-
-ref.__init__()
-
-
-# camel casing e.g AnimalFood
-# animal_food
-# 
-
-# pass = True
+object1 = Account("John Doe")
